@@ -81,35 +81,35 @@ export default async function decorate(block) {
       enableUpdateItemQuantity: enableUpdateItemQuantity === 'true',
       enableRemoveItem: enableRemoveItem === 'true',
       slots: {
-       ProductAttributes: (ctx) => {
-        const productAttributes = document.createElement('div');
-        productAttributes.className = 'product-attributes';
+        ProductAttributes: (ctx) => {
+          const productAttributes = document.createElement('div');
+          productAttributes.className = 'product-attributes';
 
-        // Create categories section
-        if (ctx.item && ctx.item.categories && ctx.item.categories.length > 0) {
-        const categoryIcons = {
-            'All': '🌍',
-            'Office': '📁',
-            'Apparel': '👕',
-            'Bags': '🎒',
-            'Collections': '🖼️',
-            'Lifestyle': '🌟',
-            'Tech': '💻',
-            'Gifts': '🎁',
-            'Travel': '✈️'
-        };
+          // Create categories section
+          if (ctx.item && ctx.item.categories && ctx.item.categories.length > 0) {
+            const categoryIcons = {
+              'All': '🌍',
+              'Office': '📁',
+              'Apparel': '👕',
+              'Bags': '🎒',
+              'Collections': '🖼️',
+              'Lifestyle': '🌟',
+              'Tech': '💻',
+              'Gifts': '🎁',
+              'Travel': '✈️'
+            };
 
-        const categoryElements = ctx.item.categories.map(category => {
-            const categoryName = category;
-            const categoryIcon = categoryIcons[categoryName] || '🌍';
-            return `<div class="product-attribute-category">${categoryIcon} ${categoryName}</div>`;
-        });
+            const categoryElements = ctx.item.categories.map(category => {
+              const categoryName = category;
+              const categoryIcon = categoryIcons[categoryName] || '🌍';
+              return `<div class="product-attribute-category">${categoryIcon} ${categoryName}</div>`;
+            });
 
-        productAttributes.innerHTML = categoryElements.join('');
+            productAttributes.innerHTML = categoryElements.join('');
 
-        // Add some basic styles
-        const style = document.createElement('style');
-        style.textContent = `
+            // Add some basic styles
+            const style = document.createElement('style');
+            style.textContent = `
             .product-attributes {
             padding: 10px;
             margin: 10px 0;
@@ -123,11 +123,12 @@ export default async function decorate(block) {
             font-size: 0.9em;
             }
         `;
-        productAttributes.appendChild(style);
-        }
+            productAttributes.appendChild(style);
+          }
 
-        ctx.appendChild(productAttributes);
-      },}
+          ctx.appendChild(productAttributes);
+        },
+      }
     })($list),
 
     // Order Summary
